@@ -74,7 +74,7 @@ export default function DistributePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-purple-900/50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-black to-amber-900/50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -92,7 +92,7 @@ export default function DistributePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8"
+          className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg p-8"
         >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -105,7 +105,7 @@ export default function DistributePage() {
                     <FormControl>
                       <Input 
                         placeholder="Enter track title" 
-                        className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                        className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500" 
                         {...field} 
                       />
                     </FormControl>
@@ -123,7 +123,7 @@ export default function DistributePage() {
                     <FormControl>
                       <Input 
                         placeholder="Enter artist name" 
-                        className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                        className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500" 
                         {...field} 
                       />
                     </FormControl>
@@ -140,18 +140,18 @@ export default function DistributePage() {
                     <FormLabel className="text-white">Genre</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
-                        <SelectTrigger className="w-full bg-purple-900/20 border-purple-500/30 text-white">
+                        <SelectTrigger className="w-full bg-black/60 border-amber-500/30 text-white">
                           <SelectValue placeholder="Select a genre" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent className="bg-purple-900 border-purple-500/30">
-                        <SelectItem value="pop" className="text-white hover:bg-purple-800">Pop</SelectItem>
-                        <SelectItem value="rock" className="text-white hover:bg-purple-800">Rock</SelectItem>
-                        <SelectItem value="hiphop" className="text-white hover:bg-purple-800">Hip Hop</SelectItem>
-                        <SelectItem value="electronic" className="text-white hover:bg-purple-800">Electronic</SelectItem>
-                        <SelectItem value="jazz" className="text-white hover:bg-purple-800">Jazz</SelectItem>
-                        <SelectItem value="classical" className="text-white hover:bg-purple-800">Classical</SelectItem>
-                        <SelectItem value="other" className="text-white hover:bg-purple-800">Other</SelectItem>
+                      <SelectContent className="bg-black border-amber-500/30">
+                        <SelectItem value="pop" className="text-white hover:bg-amber-900">Pop</SelectItem>
+                        <SelectItem value="rock" className="text-white hover:bg-amber-900">Rock</SelectItem>
+                        <SelectItem value="hiphop" className="text-white hover:bg-amber-900">Hip Hop</SelectItem>
+                        <SelectItem value="electronic" className="text-white hover:bg-amber-900">Electronic</SelectItem>
+                        <SelectItem value="jazz" className="text-white hover:bg-amber-900">Jazz</SelectItem>
+                        <SelectItem value="classical" className="text-white hover:bg-amber-900">Classical</SelectItem>
+                        <SelectItem value="other" className="text-white hover:bg-amber-900">Other</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage className="text-red-400" />
@@ -171,7 +171,7 @@ export default function DistributePage() {
                           <Button
                             variant="outline"
                             className={cn(
-                              "w-full bg-purple-900/20 border-purple-500/30 text-left font-normal",
+                              "w-full bg-black/60 border-amber-500/30 text-left font-normal",
                               !field.value && "text-gray-400"
                             )}
                           >
@@ -184,7 +184,7 @@ export default function DistributePage() {
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent className="w-auto p-0 bg-purple-900" align="start">
+                      <PopoverContent className="w-auto p-0 bg-black" align="start">
                         <Calendar
                           mode="single"
                           selected={field.value}
@@ -193,7 +193,7 @@ export default function DistributePage() {
                             date < new Date()
                           }
                           initialFocus
-                          className="bg-purple-900 text-white border-purple-500/30"
+                          className="bg-black text-white border-amber-500/30"
                         />
                       </PopoverContent>
                     </Popover>
@@ -208,15 +208,15 @@ export default function DistributePage() {
                 </label>
                 <div
                   {...getRootProps()}
-                  className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-purple-500/30 border-dashed rounded-md hover:border-purple-400 transition-colors cursor-pointer bg-purple-900/10"
+                  className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-amber-500/30 border-dashed rounded-md hover:border-amber-400 transition-colors cursor-pointer bg-black/10"
                 >
                   <div className="space-y-1 text-center">
                     <input {...getInputProps()} />
-                    <CloudArrowUpIcon className="mx-auto h-12 w-12 text-purple-400" />
+                    <CloudArrowUpIcon className="mx-auto h-12 w-12 text-amber-400" />
                     <div className="flex text-sm text-gray-300">
                       <p className="pl-1">
                         {acceptedFiles.length > 0 ? (
-                          <span className="text-purple-400 flex items-center">
+                          <span className="text-amber-400 flex items-center">
                             <CheckCircleIcon className="h-5 w-5 mr-1" />
                             {acceptedFiles[0].name}
                           </span>
@@ -232,7 +232,7 @@ export default function DistributePage() {
 
               <Button 
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-200"
+                className="w-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white transition-all duration-200"
               >
                 Submit Track
               </Button>
@@ -244,13 +244,13 @@ export default function DistributePage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-12 bg-gradient-to-br from-purple-900/30 to-black border border-purple-500/20 rounded-lg p-8"
+          className="mt-12 bg-gradient-to-br from-black/80 to-black border border-amber-500/20 rounded-lg p-8"
         >
           <h2 className="text-2xl font-bold text-white mb-4">Distribution Process</h2>
           <div className="space-y-4">
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white">
                   1
                 </div>
               </div>
@@ -264,7 +264,7 @@ export default function DistributePage() {
 
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white">
                   2
                 </div>
               </div>
@@ -278,7 +278,7 @@ export default function DistributePage() {
 
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white">
                   3
                 </div>
               </div>

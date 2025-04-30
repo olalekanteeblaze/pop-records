@@ -38,7 +38,7 @@ const artists = [
 
 export default function ArtistsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-purple-900/50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-black to-amber-900/50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function ArtistsPage() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Link href={`/artists/${artist.id}`}>
-                <div className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg overflow-hidden transition-all duration-300 hover:bg-purple-900/30 hover:scale-105 hover:border-purple-500/40">
+                <div className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg overflow-hidden transition-all duration-300 hover:bg-black/80 hover:scale-105 hover:border-amber-500/40">
                   <div className="relative h-64">
                     <Image
                       src={artist.image}
@@ -71,7 +71,7 @@ export default function ArtistsPage() {
                   </div>
                   <div className="p-6">
                     <h2 className="text-xl font-semibold text-white mb-2">{artist.name}</h2>
-                    <p className="text-sm text-purple-400 mb-2">{artist.genre}</p>
+                    <p className="text-sm text-amber-400 mb-2">{artist.genre}</p>
                     <p className="text-gray-300">{artist.bio}</p>
                   </div>
                 </div>

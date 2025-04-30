@@ -10,7 +10,7 @@ function MobileNav({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: b
       <div className="p-4">
         <button
           onClick={() => setIsOpen(false)}
-          className="mb-4 text-white hover:text-gray-300"
+          className="mb-4 text-amber-400 hover:text-amber-300"
         >
           <XMarkIcon className="h-6 w-6" />
         </button>
@@ -18,35 +18,35 @@ function MobileNav({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (open: b
           <Link
             href="/"
             onClick={() => setIsOpen(false)}
-            className="text-white/90 hover:text-white px-3 py-2 text-lg font-medium"
+            className="text-amber-100 hover:text-amber-400 px-3 py-2 text-lg font-medium"
           >
             Home
           </Link>
           <Link
             href="/artists"
             onClick={() => setIsOpen(false)}
-            className="text-white/90 hover:text-white px-3 py-2 text-lg font-medium"
+            className="text-amber-100 hover:text-amber-400 px-3 py-2 text-lg font-medium"
           >
             Artists
           </Link>
           <Link
             href="/distribute"
             onClick={() => setIsOpen(false)}
-            className="text-white/90 hover:text-white px-3 py-2 text-lg font-medium"
+            className="text-amber-100 hover:text-amber-400 px-3 py-2 text-lg font-medium"
           >
             Distribute
           </Link>
           <Link
             href="/about"
             onClick={() => setIsOpen(false)}
-            className="text-white/90 hover:text-white px-3 py-2 text-lg font-medium"
+            className="text-amber-100 hover:text-amber-400 px-3 py-2 text-lg font-medium"
           >
             About
           </Link>
           <Link
             href="/contact"
             onClick={() => setIsOpen(false)}
-            className="text-white/90 hover:text-white px-3 py-2 text-lg font-medium"
+            className="text-amber-100 hover:text-amber-400 px-3 py-2 text-lg font-medium"
           >
             Contact
           </Link>
@@ -65,25 +65,25 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
-              <Link href="/" className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+              <Link href="/" className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-600">
                 Pop Records
               </Link>
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-                <Link href="/" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+                <Link href="/" className="text-amber-100 hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
                   Home
                 </Link>
-                <Link href="/artists" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+                <Link href="/artists" className="text-amber-100 hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
                   Artists
                 </Link>
-                <Link href="/distribute" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+                <Link href="/distribute" className="text-amber-100 hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
                   Distribute
                 </Link>
-                <Link href="/about" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+                <Link href="/about" className="text-amber-100 hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
                   About
                 </Link>
-                <Link href="/contact" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
+                <Link href="/contact" className="text-amber-100 hover:text-amber-400 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
                   Contact
                 </Link>
               </div>
@@ -91,7 +91,7 @@ export default function Navigation() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="text-white hover:text-gray-300"
+                className="text-amber-400 hover:text-amber-300"
               >
                 <Bars3Icon className="h-6 w-6" />
               </button>

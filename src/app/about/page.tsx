@@ -48,7 +48,7 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8 mb-16"
+          className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg p-8 mb-16"
         >
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
@@ -79,7 +79,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg overflow-hidden hover:bg-purple-900/30 transition-all duration-300"
+                className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg overflow-hidden hover:bg-black/80 transition-all duration-300"
               >
                 <div className="relative h-64">
                   <Image
@@ -91,7 +91,7 @@ export default function AboutPage() {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-white">{member.name}</h3>
-                  <p className="text-purple-400 mb-3">{member.role}</p>
+                  <p className="text-amber-400 mb-3">{member.role}</p>
                   <p className="text-gray-300">{member.bio}</p>
                 </div>
               </motion.div>
@@ -105,19 +105,19 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-gradient-to-r from-purple-900/30 to-black border border-purple-500/20 rounded-lg p-12"
+          className="bg-gradient-to-r from-black/80 to-black border border-amber-500/20 rounded-lg p-12"
         >
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">10M+</div>
+              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">10M+</div>
               <div className="text-gray-300">Monthly Listeners</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">50K+</div>
+              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">50K+</div>
               <div className="text-gray-300">Artists</div>
             </div>
             <div>
-              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">100+</div>
+              <div className="text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">100+</div>
               <div className="text-gray-300">Countries Reached</div>
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8 hover:bg-purple-900/30 transition-all duration-300"
+                className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg p-8 hover:bg-black/80 transition-all duration-300"
               >
                 <h3 className="text-xl font-semibold text-white mb-4">{value.title}</h3>
                 <p className="text-gray-300">{value.description}</p>

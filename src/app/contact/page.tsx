@@ -49,7 +49,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-purple-900/50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-black to-amber-900/50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -69,7 +69,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8"
+            className="bg-black/60 backdrop-blur-sm border border-amber-500/20 rounded-lg p-8"
           >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -82,7 +82,7 @@ export default function ContactPage() {
                       <FormControl>
                         <Input 
                           placeholder="Enter your name" 
-                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500" 
                           {...field} 
                         />
                       </FormControl>
@@ -101,7 +101,7 @@ export default function ContactPage() {
                         <Input 
                           placeholder="Enter your email" 
                           type="email"
-                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500" 
                           {...field} 
                         />
                       </FormControl>
@@ -119,7 +119,7 @@ export default function ContactPage() {
                       <FormControl>
                         <Input 
                           placeholder="Enter subject" 
-                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500" 
                           {...field} 
                         />
                       </FormControl>
@@ -137,7 +137,7 @@ export default function ContactPage() {
                       <FormControl>
                         <Textarea 
                           placeholder="Type your message here" 
-                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500 min-h-[120px]" 
+                          className="bg-black/60 border-amber-500/30 text-white placeholder-gray-400 focus:border-amber-500 focus:ring-amber-500 min-h-[120px]" 
                           {...field} 
                         />
                       </FormControl>
@@ -148,7 +148,7 @@ export default function ContactPage() {
 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-200"
+                  className="w-full bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white transition-all duration-200"
                 >
                   Send Message
                 </Button>
@@ -161,14 +161,14 @@ export default function ContactPage() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="bg-gradient-to-br from-purple-900/30 to-black border border-purple-500/20 rounded-lg p-8"
+            className="bg-gradient-to-br from-black/80 to-black border border-amber-500/20 rounded-lg p-8"
           >
             <h2 className="text-2xl font-bold mb-8 text-white">Get in Touch</h2>
 
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <EnvelopeIcon className="h-6 w-6 text-purple-400" />
+                  <EnvelopeIcon className="h-6 w-6 text-amber-400" />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-white">Email</h3>
@@ -179,7 +179,7 @@ export default function ContactPage() {
 
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <PhoneIcon className="h-6 w-6 text-purple-400" />
+                  <PhoneIcon className="h-6 w-6 text-amber-400" />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-white">Phone</h3>
@@ -190,7 +190,7 @@ export default function ContactPage() {
 
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <MapPinIcon className="h-6 w-6 text-purple-400" />
+                  <MapPinIcon className="h-6 w-6 text-amber-400" />
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-white">Location</h3>
@@ -203,19 +203,19 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-purple-500/20">
+            <div className="mt-8 pt-8 border-t border-amber-500/20">
               <h3 className="text-lg font-medium mb-4 text-white">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
                   Twitter
                 </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
                   Facebook
                 </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
                   Instagram
                 </a>
-                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
+                <a href="#" className="text-gray-400 hover:text-amber-400 transition-colors">
                   LinkedIn
                 </a>
               </div>

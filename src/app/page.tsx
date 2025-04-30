@@ -53,7 +53,7 @@ export default function Home() {
       <HeroSection />
 
       {/* Features Section */}
-      <div className="py-16 w-full bg-gradient-to-b from-purple-900/50 to-black">
+      <div className="py-16 w-full bg-gradient-to-b from-amber-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -67,17 +67,17 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <MusicalNoteIcon className="text-purple-400" />,
+                icon: <MusicalNoteIcon className="text-amber-400" />,
                 title: "Professional Distribution",
                 description: "Get your music on all major streaming platforms including Spotify, Apple Music, and more"
               },
               {
-                icon: <GlobeAltIcon className="text-purple-400" />,
+                icon: <GlobeAltIcon className="text-amber-400" />,
                 title: "Global Reach",
                 description: "Reach millions of listeners worldwide and grow your fanbase internationally"
               },
               {
-                icon: <CurrencyDollarIcon className="text-purple-400" />,
+                icon: <CurrencyDollarIcon className="text-amber-400" />,
                 title: "Fair Royalties",
                 description: "Keep 100% of your rights and earn competitive royalties from your streams"
               }
@@ -89,7 +89,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
+                <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-black/60 border-amber-500/20 backdrop-blur-sm">
                   <CardContent className="pt-6">
                     <div className="mx-auto h-12 w-12 mb-4">
                       {feature.icon}
@@ -129,7 +129,7 @@ export default function Home() {
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
-                      <Card className="overflow-hidden bg-purple-900/20 border-purple-500/20 backdrop-blur-sm hover:bg-purple-900/30 transition-all duration-300">
+                      <Card className="overflow-hidden bg-black/60 border-amber-500/20 backdrop-blur-sm hover:bg-black/80 transition-all duration-300">
                         <CardContent className="p-0">
                           <div className="relative h-64">
                             <Image
@@ -149,15 +149,15 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="absolute -left-4 bg-purple-600/10 hover:bg-purple-600/20 border-purple-500/50 text-white" />
-              <CarouselNext className="absolute -right-4 bg-purple-600/10 hover:bg-purple-600/20 border-purple-500/50 text-white" />
+              <CarouselPrevious className="absolute -left-4 bg-amber-600/10 hover:bg-amber-600/20 border-amber-500/50 text-white" />
+              <CarouselNext className="absolute -right-4 bg-amber-600/10 hover:bg-amber-600/20 border-amber-500/50 text-white" />
             </Carousel>
           </div>
         </div>
       </div>
 
       {/* Success Stories */}
-      <div className="py-16 w-full bg-gradient-to-b from-black to-purple-900/50">
+      <div className="py-16 w-full bg-gradient-to-b from-black to-amber-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -179,10 +179,10 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <Card className="h-full bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
+                <Card className="h-full bg-black/60 border-amber-500/20 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="relative h-12 w-12 mb-4">
-                      <SparklesIcon className="text-purple-400" />
+                      <SparklesIcon className="text-amber-400" />
                     </div>
                     <p className="text-gray-300 mb-4 italic">&quot;{story.quote}&quot;</p>
                     <div className="flex items-center">
@@ -207,7 +207,7 @@ export default function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="w-full bg-gradient-to-b from-purple-900/50 to-black py-16">
+      <div className="w-full bg-gradient-to-b from-amber-900/50 to-black py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -223,7 +223,7 @@ export default function Home() {
             <Button
               asChild
               size="lg"
-              className="bg-purple-600 hover:bg-purple-700 text-white group"
+              className="bg-amber-600 hover:bg-amber-700 text-white group"
             >
               <Link href="/distribute">
                 Get Started

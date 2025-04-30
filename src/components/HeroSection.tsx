@@ -15,7 +15,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center w-full overflow-hidden bg-gradient-to-b from-black to-purple-900">
+    <div className="relative min-h-screen flex items-center justify-center w-full overflow-hidden bg-gradient-to-b from-black to-amber-900">
       {/* Background grid pattern */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -28,7 +28,7 @@ const HeroSection = () => {
       </div>
 
       {/* Animated gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 animate-gradient" />
+      <div className="absolute inset-0 bg-gradient-to-r from-amber-600/20 to-yellow-600/20 animate-gradient" />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -46,7 +46,7 @@ const HeroSection = () => {
           >
             Share Your Music
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-600">
               With The World
             </span>
           </motion.h1>
@@ -69,7 +69,7 @@ const HeroSection = () => {
           >
             <Link
               href="/distribute"
-              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-200"
+              className="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 transform hover:scale-105 transition-all duration-200"
             >
               Start Distributing
             </Link>
