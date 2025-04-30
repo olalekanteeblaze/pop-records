@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Navigation from "@/components/Navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,36 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className="absolute top-0 left-0 right-0 z-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
-                <Link href="/" className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                  Pop Records
-                </Link>
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline space-x-4">
-                  <Link href="/" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    Home
-                  </Link>
-                  <Link href="/artists" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    Artists
-                  </Link>
-                  <Link href="/distribute" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    Distribute
-                  </Link>
-                  <Link href="/about" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    About
-                  </Link>
-                  <Link href="/contact" className="text-white/90 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-200">
-                    Contact
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navigation />
         <main>{children}</main>
         <footer className="bg-gradient-to-b from-black to-purple-900/50 text-white py-8 border-t border-purple-500/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
