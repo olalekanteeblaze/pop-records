@@ -1,114 +1,177 @@
 'use client'
 
-import { useState } from 'react'
 import { EnvelopeIcon, PhoneIcon, MapPinIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+
+const formSchema = z.object({
+  name: z.string().min(2, {
+    message: "Name must be at least 2 characters.",
+  }),
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+  subject: z.string().min(5, {
+    message: "Subject must be at least 5 characters.",
+  }),
+  message: z.string().min(10, {
+    message: "Message must be at least 10 characters.",
+  }),
+})
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  function onSubmit(values: z.infer<typeof formSchema>) {
     // Handle form submission (in a real app, this would connect to a backend)
-    console.log('Form submitted:', formData)
+    console.log('Form submitted:', values)
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-black to-purple-900/50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-600">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl font-bold text-white mb-4">Contact Us</h1>
+          <p className="text-xl text-gray-300">
             Have questions? We&apos;re here to help.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  required
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8"
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your name" 
+                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-400" />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  required
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Email</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your email" 
+                          type="email"
+                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-400" />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  required
+                <FormField
+                  control={form.control}
+                  name="subject"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Subject</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter subject" 
+                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-400" />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                  required
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Message</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Type your message here" 
+                          className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500 min-h-[120px]" 
+                          {...field} 
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-400" />
+                    </FormItem>
+                  )}
                 />
-              </div>
 
-              <div>
-                <button
+                <Button 
                   type="submit"
-                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+                  className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-200"
                 >
                   Send Message
-                </button>
-              </div>
-            </form>
-          </div>
+                </Button>
+              </form>
+            </Form>
+          </motion.div>
 
           {/* Contact Information */}
-          <div className="bg-black text-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold mb-8">Get in Touch</h2>
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-gradient-to-br from-purple-900/30 to-black border border-purple-500/20 rounded-lg p-8"
+          >
+            <h2 className="text-2xl font-bold mb-8 text-white">Get in Touch</h2>
 
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <EnvelopeIcon className="h-6 w-6 text-gray-400" />
+                  <EnvelopeIcon className="h-6 w-6 text-purple-400" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium">Email</h3>
+                  <h3 className="text-lg font-medium text-white">Email</h3>
                   <p className="mt-1 text-gray-300">support@poprecords.com</p>
                   <p className="text-gray-300">info@poprecords.com</p>
                 </div>
@@ -116,10 +179,10 @@ export default function ContactPage() {
 
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <PhoneIcon className="h-6 w-6 text-gray-400" />
+                  <PhoneIcon className="h-6 w-6 text-purple-400" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium">Phone</h3>
+                  <h3 className="text-lg font-medium text-white">Phone</h3>
                   <p className="mt-1 text-gray-300">+1 (555) 123-4567</p>
                   <p className="text-gray-300">Mon-Fri 9am to 6pm PST</p>
                 </div>
@@ -127,10 +190,10 @@ export default function ContactPage() {
 
               <div className="flex items-start">
                 <div className="flex-shrink-0">
-                  <MapPinIcon className="h-6 w-6 text-gray-400" />
+                  <MapPinIcon className="h-6 w-6 text-purple-400" />
                 </div>
                 <div className="ml-4">
-                  <h3 className="text-lg font-medium">Location</h3>
+                  <h3 className="text-lg font-medium text-white">Location</h3>
                   <p className="mt-1 text-gray-300">
                     123 Music Street<br />
                     Los Angeles, CA 90028<br />
@@ -140,24 +203,24 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="mt-8 pt-8 border-t border-gray-700">
-              <h3 className="text-lg font-medium mb-4">Follow Us</h3>
+            <div className="mt-8 pt-8 border-t border-purple-500/20">
+              <h3 className="text-lg font-medium mb-4 text-white">Follow Us</h3>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                   Twitter
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                   Facebook
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                   Instagram
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white">
+                <a href="#" className="text-gray-400 hover:text-purple-400 transition-colors">
                   LinkedIn
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

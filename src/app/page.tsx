@@ -118,32 +118,41 @@ export default function Home() {
             <p className="text-xl text-gray-300">Discover amazing talent on Pop Records</p>
           </motion.div>
 
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {featuredArtists.map((artist, index) => (
-                <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
-                    <CardContent className="p-0">
-                      <div className="relative h-64">
-                        <Image
-                          src={artist.image}
-                          alt={artist.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h3 className="text-lg font-semibold text-white">{artist.name}</h3>
-                        <p className="text-gray-300">{artist.genre}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="text-white border-purple-500/50" />
-            <CarouselNext className="text-white border-purple-500/50" />
-          </Carousel>
+          <div className="relative px-12">
+            <Carousel className="w-full max-w-5xl mx-auto">
+              <CarouselContent className="-ml-4">
+                {featuredArtists.map((artist, index) => (
+                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <Card className="overflow-hidden bg-purple-900/20 border-purple-500/20 backdrop-blur-sm hover:bg-purple-900/30 transition-all duration-300">
+                        <CardContent className="p-0">
+                          <div className="relative h-64">
+                            <Image
+                              src={artist.image}
+                              alt={artist.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <div className="p-4">
+                            <h3 className="text-lg font-semibold text-white">{artist.name}</h3>
+                            <p className="text-gray-300">{artist.genre}</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute -left-4 bg-purple-600/10 hover:bg-purple-600/20 border-purple-500/50 text-white" />
+              <CarouselNext className="absolute -right-4 bg-purple-600/10 hover:bg-purple-600/20 border-purple-500/50 text-white" />
+            </Carousel>
+          </div>
         </div>
       </div>
 

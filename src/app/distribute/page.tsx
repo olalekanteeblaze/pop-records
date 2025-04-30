@@ -1,15 +1,60 @@
 'use client'
 
-import { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { CloudArrowUpIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
+import { CloudArrowUpIcon, CheckCircleIcon, CalendarIcon } from '@heroicons/react/24/outline'
+import { motion } from 'framer-motion'
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import * as z from "zod"
+import { format } from "date-fns"
+import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { cn } from "@/lib/utils"
+
+const formSchema = z.object({
+  title: z.string().min(2, {
+    message: "Title must be at least 2 characters.",
+  }),
+  artist: z.string().min(2, {
+    message: "Artist name must be at least 2 characters.",
+  }),
+  genre: z.string().min(1, {
+    message: "Please select a genre.",
+  }),
+  releaseDate: z.date({
+    required_error: "Please select a release date.",
+  }),
+})
 
 export default function DistributePage() {
-  const [formData, setFormData] = useState({
-    title: '',
-    artist: '',
-    genre: '',
-    releaseDate: '',
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+      artist: "",
+      genre: "",
+    },
   })
 
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
@@ -19,139 +64,199 @@ export default function DistributePage() {
     maxFiles: 1
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  function onSubmit(values: z.infer<typeof formSchema>) {
     // Handle form submission (in a real app, this would connect to a backend)
-    console.log('Form submitted:', { ...formData, file: acceptedFiles[0]?.name })
+    console.log('Form submitted:', { 
+      ...values, 
+      releaseDate: format(values.releaseDate, "yyyy-MM-dd"),
+      file: acceptedFiles[0]?.name 
+    })
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-black to-purple-900/50 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Distribute Your Music</h1>
-          <p className="text-xl text-gray-600">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl font-bold text-white mb-4">Distribute Your Music</h1>
+          <p className="text-xl text-gray-300">
             Share your music with millions of listeners worldwide
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-white rounded-lg shadow-lg p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-                Track Title
-              </label>
-              <input
-                type="text"
-                id="title"
-                value={formData.title}
-                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-purple-900/20 backdrop-blur-sm border border-purple-500/20 rounded-lg p-8"
+        >
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-white">Track Title</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder="Enter track title" 
+                        className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <div>
-              <label htmlFor="artist" className="block text-sm font-medium text-gray-700">
-                Artist Name
-              </label>
-              <input
-                type="text"
-                id="artist"
-                value={formData.artist}
-                onChange={(e) => setFormData({ ...formData, artist: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
+              <FormField
+                control={form.control}
+                name="artist"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-white">Artist Name</FormLabel>
+                    <FormControl>
+                      <Input 
+                        placeholder="Enter artist name" 
+                        className="bg-purple-900/20 border-purple-500/30 text-white placeholder-gray-400 focus:border-purple-500 focus:ring-purple-500" 
+                        {...field} 
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <div>
-              <label htmlFor="genre" className="block text-sm font-medium text-gray-700">
-                Genre
-              </label>
-              <select
-                id="genre"
-                value={formData.genre}
-                onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
-              >
-                <option value="">Select a genre</option>
-                <option value="pop">Pop</option>
-                <option value="rock">Rock</option>
-                <option value="hiphop">Hip Hop</option>
-                <option value="electronic">Electronic</option>
-                <option value="jazz">Jazz</option>
-                <option value="classical">Classical</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="releaseDate" className="block text-sm font-medium text-gray-700">
-                Release Date
-              </label>
-              <input
-                type="date"
-                id="releaseDate"
-                value={formData.releaseDate}
-                onChange={(e) => setFormData({ ...formData, releaseDate: e.target.value })}
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                required
+              <FormField
+                control={form.control}
+                name="genre"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-white">Genre</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger className="w-full bg-purple-900/20 border-purple-500/30 text-white">
+                          <SelectValue placeholder="Select a genre" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-purple-900 border-purple-500/30">
+                        <SelectItem value="pop" className="text-white hover:bg-purple-800">Pop</SelectItem>
+                        <SelectItem value="rock" className="text-white hover:bg-purple-800">Rock</SelectItem>
+                        <SelectItem value="hiphop" className="text-white hover:bg-purple-800">Hip Hop</SelectItem>
+                        <SelectItem value="electronic" className="text-white hover:bg-purple-800">Electronic</SelectItem>
+                        <SelectItem value="jazz" className="text-white hover:bg-purple-800">Jazz</SelectItem>
+                        <SelectItem value="classical" className="text-white hover:bg-purple-800">Classical</SelectItem>
+                        <SelectItem value="other" className="text-white hover:bg-purple-800">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
               />
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Upload Track
-              </label>
-              <div
-                {...getRootProps()}
-                className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-indigo-500 transition-colors cursor-pointer"
-              >
-                <div className="space-y-1 text-center">
-                  <input {...getInputProps()} />
-                  <CloudArrowUpIcon className="mx-auto h-12 w-12 text-gray-400" />
-                  <div className="flex text-sm text-gray-600">
-                    <p className="pl-1">
-                      {acceptedFiles.length > 0 ? (
-                        <span className="text-indigo-600 flex items-center">
-                          <CheckCircleIcon className="h-5 w-5 mr-1" />
-                          {acceptedFiles[0].name}
-                        </span>
-                      ) : (
-                        'Drag and drop your track, or click to select'
-                      )}
-                    </p>
+              <FormField
+                control={form.control}
+                name="releaseDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-white">Release Date</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full bg-purple-900/20 border-purple-500/30 text-left font-normal",
+                              !field.value && "text-gray-400"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0 bg-purple-900" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) =>
+                            date < new Date()
+                          }
+                          initialFocus
+                          className="bg-purple-900 text-white border-purple-500/30"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage className="text-red-400" />
+                  </FormItem>
+                )}
+              />
+
+              <div>
+                <label className="block text-sm font-medium text-white mb-2">
+                  Upload Track
+                </label>
+                <div
+                  {...getRootProps()}
+                  className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-purple-500/30 border-dashed rounded-md hover:border-purple-400 transition-colors cursor-pointer bg-purple-900/10"
+                >
+                  <div className="space-y-1 text-center">
+                    <input {...getInputProps()} />
+                    <CloudArrowUpIcon className="mx-auto h-12 w-12 text-purple-400" />
+                    <div className="flex text-sm text-gray-300">
+                      <p className="pl-1">
+                        {acceptedFiles.length > 0 ? (
+                          <span className="text-purple-400 flex items-center">
+                            <CheckCircleIcon className="h-5 w-5 mr-1" />
+                            {acceptedFiles[0].name}
+                          </span>
+                        ) : (
+                          'Drag and drop your track, or click to select'
+                        )}
+                      </p>
+                    </div>
+                    <p className="text-xs text-gray-400">MP3 or WAV up to 50MB</p>
                   </div>
-                  <p className="text-xs text-gray-500">MP3 or WAV up to 50MB</p>
                 </div>
               </div>
-            </div>
 
-            <div className="pt-4">
-              <button
+              <Button 
                 type="submit"
-                className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-200"
               >
                 Submit Track
-              </button>
-            </div>
-          </form>
-        </div>
+              </Button>
+            </form>
+          </Form>
+        </motion.div>
 
-        <div className="mt-12 bg-white rounded-lg shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Distribution Process</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-12 bg-gradient-to-br from-purple-900/30 to-black border border-purple-500/20 rounded-lg p-8"
+        >
+          <h2 className="text-2xl font-bold text-white mb-4">Distribution Process</h2>
           <div className="space-y-4">
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-black text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                   1
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Upload Your Track</h3>
-                <p className="mt-1 text-gray-600">
+                <h3 className="text-lg font-medium text-white">Upload Your Track</h3>
+                <p className="mt-1 text-gray-300">
                   Submit your music in high-quality format (MP3 or WAV)
                 </p>
               </div>
@@ -159,13 +264,13 @@ export default function DistributePage() {
 
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-black text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                   2
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Review Process</h3>
-                <p className="mt-1 text-gray-600">
+                <h3 className="text-lg font-medium text-white">Review Process</h3>
+                <p className="mt-1 text-gray-300">
                   Our team will review your submission within 2-3 business days
                 </p>
               </div>
@@ -173,19 +278,19 @@ export default function DistributePage() {
 
             <div className="flex items-start">
               <div className="flex-shrink-0">
-                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-black text-white">
+                <div className="flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                   3
                 </div>
               </div>
               <div className="ml-4">
-                <h3 className="text-lg font-medium text-gray-900">Distribution</h3>
-                <p className="mt-1 text-gray-600">
+                <h3 className="text-lg font-medium text-white">Distribution</h3>
+                <p className="mt-1 text-gray-300">
                   Once approved, your music will be distributed to major streaming platforms
                 </p>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   )
