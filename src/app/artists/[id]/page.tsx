@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { MusicalNoteIcon } from '@heroicons/react/24/outline'
 
 // Mock data (in a real app, this would come from an API/database)
-const artists = [
+const artists: Artist[] = [
   {
     id: 1,
     name: 'Sarah Johnson',
@@ -61,8 +61,28 @@ const artists = [
   },
 ]
 
-export default function ArtistPage({ params }: { params: { id: string } }) {
-  const artist = artists.find((a) => a.id === parseInt(params.id))
+interface Artist {
+  id: number;
+  name: string;
+  genre: string;
+  image: string;
+  bio: string;
+  location: string;
+  followers: string;
+  topTracks: Array<{
+    id: number;
+    title: string;
+    plays: string;
+  }>;
+}
+
+type Props = {
+  params: Promise<{ id: string }>;
+}
+
+export default async function ArtistPage({ params }: Props) {
+  const { id } = await params;
+  const artist = artists.find((a) => a.id === parseInt(id))
 
   if (!artist) {
     return (
