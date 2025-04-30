@@ -49,11 +49,11 @@ const successStories = [
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main className="flex min-h-screen flex-col items-center justify-between bg-black">
       <HeroSection />
 
       {/* Features Section */}
-      <div className="py-16 bg-white">
+      <div className="py-16 w-full bg-gradient-to-b from-purple-900/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -62,22 +62,22 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-12">Why Choose Pop Records?</h2>
+            <h2 className="text-3xl font-bold text-white mb-12">Why Choose Pop Records?</h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <MusicalNoteIcon />,
+                icon: <MusicalNoteIcon className="text-purple-400" />,
                 title: "Professional Distribution",
                 description: "Get your music on all major streaming platforms including Spotify, Apple Music, and more"
               },
               {
-                icon: <GlobeAltIcon />,
+                icon: <GlobeAltIcon className="text-purple-400" />,
                 title: "Global Reach",
                 description: "Reach millions of listeners worldwide and grow your fanbase internationally"
               },
               {
-                icon: <CurrencyDollarIcon />,
+                icon: <CurrencyDollarIcon className="text-purple-400" />,
                 title: "Fair Royalties",
                 description: "Keep 100% of your rights and earn competitive royalties from your streams"
               }
@@ -89,13 +89,13 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <Card className="text-center p-6 hover:shadow-lg transition-shadow">
+                <Card className="text-center p-6 hover:shadow-lg transition-shadow bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
                   <CardContent className="pt-6">
-                    <div className="mx-auto h-12 w-12 text-black mb-4">
+                    <div className="mx-auto h-12 w-12 mb-4">
                       {feature.icon}
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+                    <p className="text-gray-300">{feature.description}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -105,7 +105,7 @@ export default function Home() {
       </div>
 
       {/* Featured Artists Section */}
-      <div className="py-16 bg-gray-50">
+      <div className="py-16 w-full bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,15 +114,15 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Artists</h2>
-            <p className="text-xl text-gray-600">Discover amazing talent on Pop Records</p>
+            <h2 className="text-3xl font-bold text-white mb-4">Featured Artists</h2>
+            <p className="text-xl text-gray-300">Discover amazing talent on Pop Records</p>
           </motion.div>
 
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent>
               {featuredArtists.map((artist, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden">
+                  <Card className="overflow-hidden bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
                     <CardContent className="p-0">
                       <div className="relative h-64">
                         <Image
@@ -133,22 +133,22 @@ export default function Home() {
                         />
                       </div>
                       <div className="p-4">
-                        <h3 className="text-lg font-semibold">{artist.name}</h3>
-                        <p className="text-gray-600">{artist.genre}</p>
+                        <h3 className="text-lg font-semibold text-white">{artist.name}</h3>
+                        <p className="text-gray-300">{artist.genre}</p>
                       </div>
                     </CardContent>
                   </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="text-white border-purple-500/50" />
+            <CarouselNext className="text-white border-purple-500/50" />
           </Carousel>
         </div>
       </div>
 
       {/* Success Stories */}
-      <div className="py-16 bg-white">
+      <div className="py-16 w-full bg-gradient-to-b from-black to-purple-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,8 +157,8 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Success Stories</h2>
-            <p className="text-xl text-gray-600">Hear from artists who chose Pop Records</p>
+            <h2 className="text-3xl font-bold text-white mb-4">Success Stories</h2>
+            <p className="text-xl text-gray-300">Hear from artists who chose Pop Records</p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -170,12 +170,12 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
-                <Card className="h-full">
+                <Card className="h-full bg-purple-900/20 border-purple-500/20 backdrop-blur-sm">
                   <CardContent className="p-6">
                     <div className="relative h-12 w-12 mb-4">
-                      <SparklesIcon className="text-yellow-400" />
+                      <SparklesIcon className="text-purple-400" />
                     </div>
-                    <p className="text-gray-600 mb-4 italic">&quot;{story.quote}&quot;</p>
+                    <p className="text-gray-300 mb-4 italic">&quot;{story.quote}&quot;</p>
                     <div className="flex items-center">
                       <div className="relative h-12 w-12 rounded-full overflow-hidden">
                         <Image
@@ -186,7 +186,7 @@ export default function Home() {
                         />
                       </div>
                       <div className="ml-4">
-                        <p className="font-semibold">{story.artist}</p>
+                        <p className="font-semibold text-white">{story.artist}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -198,7 +198,7 @@ export default function Home() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-black text-white py-16">
+      <div className="w-full bg-gradient-to-b from-purple-900/50 to-black py-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -207,15 +207,14 @@ export default function Home() {
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
         >
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Share Your Music?</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">Ready to Share Your Music?</h2>
             <p className="text-xl text-gray-300 mb-8">
               Join thousands of artists who trust Pop Records with their music distribution
             </p>
             <Button
               asChild
               size="lg"
-              variant="secondary"
-              className="group"
+              className="bg-purple-600 hover:bg-purple-700 text-white group"
             >
               <Link href="/distribute">
                 Get Started
